@@ -1,140 +1,180 @@
-<div align="center">
+<p align="center">
+  <img src="https://img.shields.io/badge/Deep%20Learning-Heart%20Disease%20Classification-ff6b6b?style=for-the-badge&logo=heart&logoColor=white" alt="Deep Learning Heart Disease" />
+</p>
 
-# 🫀 Prédiction de maladie cardiaque — Deep Learning
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" alt="TensorFlow" />
+  <img src="https://img.shields.io/badge/Keras-Deep%20Learning-D00000?style=flat-square&logo=keras&logoColor=white" alt="Keras" />
+  <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white" alt="Jupyter" />
+  <img src="https://img.shields.io/badge/NumPy-Pandas-013243?style=flat-square&logo=numpy&logoColor=white" alt="NumPy" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License" />
+</p>
 
-**Classification binaire sur le jeu de données Heart Disease (UCI)**  
-*Réseau de neurones avec Keras / TensorFlow*
+<h1 align="center">🫀 Heart Disease Prediction — Binary Classification</h1>
+<p align="center">
+  <strong>Neural network–based binary classification on the UCI Heart Disease dataset</strong>
+</p>
+<p align="center">
+  <em>Train, validate, and evaluate a fully connected model with Keras & TensorFlow</em>
+</p>
 
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)](https://jupyter.org/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+<p align="center">
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-about">About</a> •
+  <a href="#-dataset">Dataset</a> •
+  <a href="#-model">Model</a> •
+  <a href="#-getting-started">Getting Started</a> •
+  <a href="#-tech-stack">Tech Stack</a>
+</p>
 
----
-
-</div>
-
-## 📋 Table des matières
-
-- [À propos du projet](#-à-propos-du-projet)
-- [Jeu de données](#-jeu-de-données)
-- [Architecture du modèle](#-architecture-du-modèle)
-- [Structure du dépôt](#-structure-du-dépôt)
-- [Installation](#-installation)
-- [Utilisation](#-utilisation)
-- [Résultats & visualisations](#-résultats--visualisations)
-- [Technologies utilisées](#-technologies-utilisées)
-- [Auteur & licence](#-auteur--licence)
-
----
-
-## 🎯 À propos du projet
-
-Ce dépôt contient un **projet de classification binaire** en deep learning appliqué à la **prédiction de maladie cardiaque**. L’objectif est de prédire si un patient est atteint ou non d’une affection cardiaque (variable cible binaire) à partir de **13 caractéristiques cliniques** (âge, sexe, pression artérielle, cholestérol, etc.).
-
-Le projet est organisé autour de **deux notebooks Jupyter** :
-
-| Notebook | Données | Objectif |
-|----------|---------|----------|
-| `text_binary_classification_example.ipynb` | `heart.csv` (303 lignes) | Entraînement avec validation interne (split 78 % / 22 %) |
-| `text_binary_classification_example_val.ipynb` | `heart_training_val.csv` + `heart_testing.csv` | Entraînement sur train/val puis **évaluation sur un jeu de test séparé** |
-
-Le modèle utilisé est un **réseau de neurones fully connected** (Keras Sequential) avec une couche cachée et une sortie sigmoïde pour la classification binaire.
+<br />
 
 ---
 
-## 📊 Jeu de données
+## 📑 Table of contents
 
-Les données proviennent du **UCI Machine Learning Repository** (Heart Disease Dataset). Elles sont fournies au format CSV dans le dossier `dataset/`.
+- [Quick Start](#-quick-start)
+- [About the project](#-about)
+- [Dataset](#-dataset)
+- [Model architecture](#-model)
+- [Repository structure](#-repository-structure)
+- [Getting started](#-getting-started)
+- [Usage](#-usage)
+- [Results & visualizations](#-results--visualizations)
+- [Tech stack](#-tech-stack)
+- [License](#-license)
 
-### Fichiers
+---
 
-| Fichier | Description |
-|---------|-------------|
-| `heart.csv` | Jeu complet (303 patients, 14 colonnes) |
-| `heart_training_val.csv` | Sous-ensemble train + validation (271 lignes) |
-| `heart_testing.csv` | Jeu de test réservé pour l’évaluation finale |
+## ⚡ Quick Start
 
-### Variables (14 colonnes)
+```bash
+git clone https://github.com/Andassa/DL.git && cd DL
+python -m venv venv && venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+jupyter notebook
+```
+
+Then open **`text_binary_classification_example.ipynb`** or **`text_binary_classification_example_val.ipynb`** and run all cells.
+
+---
+
+## 🎯 About
+
+This repository implements **binary classification** for **heart disease prediction** using a small **fully connected neural network**. The goal is to predict whether a patient has heart disease (**target = 1**) or not (**target = 0**) from **13 clinical features** (age, sex, blood pressure, cholesterol, ECG, etc.).
+
+| Notebook | Data | Purpose |
+|----------|------|--------|
+| **`text_binary_classification_example.ipynb`** | `heart.csv` (303 rows) | Train with internal validation (78% / 22% split) |
+| **`text_binary_classification_example_val.ipynb`** | `heart_training_val.csv` + `heart_testing.csv` | Train/validate, then **evaluate on a held-out test set** |
+
+> **Summary:** Two Jupyter workflows — one for quick experimentation on the full dataset, one for a proper train/validation/test pipeline with final metrics on unseen data.
+
+---
+
+## 📊 Dataset
+
+Data comes from the **UCI Machine Learning Repository** (Heart Disease Dataset). All CSVs are in the **`dataset/`** folder.
+
+### Files
+
+| File | Description |
+|------|-------------|
+| **`heart.csv`** | Full dataset — 303 patients, 14 columns |
+| **`heart_training_val.csv`** | Train + validation subset — 271 rows |
+| **`heart_testing.csv`** | Held-out test set for final evaluation |
+
+### Features (14 columns)
 
 | Variable | Description |
 |----------|-------------|
-| `age` | Âge (années) |
-| `sex` | Sexe (0 = femme, 1 = homme) |
-| `cp` | Type de douleur thoracique (0–3) |
-| `trestbps` | Pression artérielle au repos (mmHg) |
-| `chol` | Cholestérol sérique (mg/dl) |
-| `fbs` | Glycémie à jeun > 120 mg/dl (0/1) |
-| `restecg` | Résultat électrocardiographique au repos (0–2) |
-| `thalach` | Fréquence cardiaque max atteinte |
-| `exang` | Angine induite par l’exercice (0/1) |
-| `oldpeak` | Dépression du segment ST (exercice) |
-| `slope` | Pente du segment ST (0–2) |
-| `ca` | Nombre de vaisseaux principaux colorés (0–4) |
-| `thal` | Résultat du test thal (0–3) |
-| **`target`** | **Présence de maladie cardiaque (0 = non, 1 = oui)** |
-
-Les notebooks chargent les CSV, séparent les features (`X`) et la cible (`y`), et n’utilisent **pas de prétraitement type StandardScaler** dans la version actuelle (les entrées sont utilisées telles quelles).
+| `age` | Age in years |
+| `sex` | Sex (0 = female, 1 = male) |
+| `cp` | Chest pain type (0–3) |
+| `trestbps` | Resting blood pressure (mmHg) |
+| `chol` | Serum cholesterol (mg/dl) |
+| `fbs` | Fasting blood sugar > 120 mg/dl (0/1) |
+| `restecg` | Resting electrocardiographic results (0–2) |
+| `thalach` | Maximum heart rate achieved |
+| `exang` | Exercise-induced angina (0/1) |
+| `oldpeak` | ST depression induced by exercise |
+| `slope` | Slope of peak exercise ST segment (0–2) |
+| `ca` | Number of major vessels colored (0–4) |
+| `thal` | Thalassemia test result (0–3) |
+| **`target`** | **Heart disease present (0 = no, 1 = yes)** |
 
 ---
 
-## 🧠 Architecture du modèle
+## 🧠 Model
 
-Modèle **Keras Sequential** :
+**Keras Sequential** binary classifier:
 
 ```
-Input (13 features)
-    ↓
-Dense(11, activation='relu', input_dim=13)
-    ↓
-Dense(1, activation='sigmoid')
-    ↓
-Output (probabilité 0–1)
+┌─────────────────────────┐
+│  Input  (13 features)   │
+└───────────┬─────────────┘
+            │
+            ▼
+┌─────────────────────────┐
+│  Dense(11, ReLU)        │  ← hidden layer
+└───────────┬─────────────┘
+            │
+            ▼
+┌─────────────────────────┐
+│  Dense(1, Sigmoid)      │  ← output (probability)
+└───────────┬─────────────┘
+            │
+            ▼
+     Prediction (0 or 1)
 ```
 
-- **Perte :** `binary_crossentropy`
-- **Optimiseur :** `adam`
-- **Métrique :** `accuracy`
-- **Entraînement :** 300 epochs, `validation_split=0.22` (pour le notebook sur `heart.csv`)
+| Setting | Value |
+|---------|--------|
+| **Loss** | `binary_crossentropy` |
+| **Optimizer** | `adam` |
+| **Metric** | `accuracy` |
+| **Epochs** | 300 |
+| **Validation split** | 0.22 (when using full `heart.csv`) |
 
-La prédiction finale est obtenue en seuillant la sortie à 0,5 : `(model.predict(X) > 0.5).astype("int32")`.
+Final class prediction: **`(model.predict(X) > 0.5).astype("int32")`**
 
 ---
 
-## 📁 Structure du dépôt
+## 📁 Repository structure
 
 ```
 DL/
-├── dataset/
-│   ├── heart.csv                 # Données complètes
-│   ├── heart_training_val.csv     # Train + validation
-│   └── heart_testing.csv         # Jeu de test
-├── text_binary_classification_example.ipynb      # Entraînement (heart.csv)
-├── text_binary_classification_example_val.ipynb # Entraînement + évaluation sur test
-├── requirements.txt
-├── README.md
-└── .ipynb_checkpoints/            # Checkpoints Jupyter (optionnel)
+├── 📂 dataset/
+│   ├── heart.csv
+│   ├── heart_training_val.csv
+│   └── heart_testing.csv
+├── 📓 text_binary_classification_example.ipynb
+├── 📓 text_binary_classification_example_val.ipynb
+├── 📄 requirements.txt
+├── 📄 README.md
+└── .ipynb_checkpoints/
 ```
 
 ---
 
-## 🚀 Installation
+## 🚀 Getting started
 
-### Prérequis
+### Prerequisites
 
-- **Python** 3.8 ou supérieur  
-- Environnement virtuel recommandé (`venv` ou `conda`)
+- **Python 3.8+**
+- Optional but recommended: **virtual environment** (`venv` or `conda`)
 
-### Étapes
+### Install
 
-1. **Cloner le dépôt**
+1. **Clone and enter the repo**
 
    ```bash
-   git clone https://github.com/VOTRE_UTILISATEUR/DL.git
+   git clone https://github.com/Andassa/DL.git
    cd DL
    ```
 
-2. **Créer et activer un environnement virtuel** (exemple avec `venv`)
+2. **Create and activate a virtual environment**
 
    ```bash
    python -m venv venv
@@ -144,19 +184,19 @@ DL/
    source venv/bin/activate
    ```
 
-3. **Installer les dépendances**
+3. **Install dependencies**
 
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Lancer Jupyter** (si vous utilisez les notebooks)
+4. **Launch Jupyter**
 
    ```bash
    jupyter notebook
    ```
 
-   Ou avec JupyterLab :
+   Or **JupyterLab:**
 
    ```bash
    pip install jupyterlab
@@ -165,59 +205,58 @@ DL/
 
 ---
 
-## 📖 Utilisation
+## 📖 Usage
 
-1. Ouvrir l’un des deux notebooks dans Jupyter.
-2. Vérifier que le chemin des CSV est correct (par défaut : `dataset/heart.csv` ou `dataset/heart_training_val.csv` et `dataset/heart_testing.csv`).
-3. Exécuter les cellules dans l’ordre (Run All ou cellule par cellule).
-4. Dans le notebook **avec validation** (`text_binary_classification_example_val.ipynb`), le modèle est en plus évalué sur `heart_testing.csv` via `model.evaluate(X_test, y_test)`.
+1. Open one of the two notebooks in Jupyter.
+2. Ensure CSV paths are correct (`dataset/heart.csv` or `dataset/heart_training_val.csv` and `dataset/heart_testing.csv`).
+3. Run cells in order (**Run All** or step through).
+4. In **`text_binary_classification_example_val.ipynb`**, the model is evaluated on the test set via **`model.evaluate(X_test, y_test)`**.
 
-Les notebooks incluent notamment :
+**What each notebook does:**
 
-- Chargement et exploration des données (`head`, `shape`, `describe`, `info`, `isna`)
-- Visualisations (répartition des variables, etc.)
-- Définition du modèle Keras
-- Compilation et entraînement
-- Courbes de loss et d’accuracy (train / validation)
-- Prédictions et, pour le notebook « val », évaluation sur le jeu de test
-
----
-
-## 📈 Résultats & visualisations
-
-Les notebooks génèrent :
-
-- **Statistiques descriptives** et vérification des valeurs manquantes
-- **Graphiques** de distribution des variables
-- **Courbes d’apprentissage** : loss et accuracy en fonction du nombre d’epochs (train et validation)
-- **Évaluation sur le jeu de test** (notebook `text_binary_classification_example_val.ipynb`) : loss et accuracy finales
-
-Les performances dépendent du split et des hyperparamètres (epochs, taille de la couche cachée, etc.). Vous pouvez faire varier ces paramètres directement dans les cellules concernées.
+- Load and explore data (`head`, `shape`, `describe`, `info`, `isna`)
+- Basic visualizations (distributions, etc.)
+- Define and compile the Keras model
+- Train with loss/accuracy curves (train & validation)
+- Predictions and, in the “val” notebook, **test set evaluation**
 
 ---
 
-## 🛠 Technologies utilisées
+## 📈 Results & visualizations
 
-- **Python** — Langage principal  
-- **NumPy** — Calcul numérique  
-- **Pandas** — Manipulation des données (CSV, DataFrames)  
-- **TensorFlow / Keras** — Réseau de neurones et entraînement  
-- **Matplotlib** — Visualisations (courbes, distributions)  
-- **Jupyter** — Notebooks interactifs  
+The notebooks produce:
 
----
+- **Descriptive statistics** and missing-value checks  
+- **Distribution plots** for the features  
+- **Training curves**: loss and accuracy vs. epochs (train & validation)  
+- **Test set evaluation** (val notebook): final loss and accuracy  
 
-## 👤 Auteur & licence
-
-Projet réalisé dans le cadre d’un apprentissage du **deep learning** et de la **classification binaire** sur données de santé.
-
-- **Licence :** MIT (ou indiquez la vôtre si différente).  
-- Pour toute question ou suggestion, n’hésitez pas à ouvrir une *issue* ou une *pull request*.
+Performance depends on the split and hyperparameters (epochs, hidden size, etc.). You can tune these directly in the notebook cells.
 
 ---
 
-<div align="center">
+## 🛠 Tech stack
 
-*Si ce projet vous a été utile, n’hésitez pas à lui donner une ⭐ sur GitHub.*
+| Tool | Role |
+|------|------|
+| **Python** | Main language |
+| **NumPy** | Numerical computation |
+| **Pandas** | Data loading & manipulation (CSV, DataFrames) |
+| **TensorFlow / Keras** | Neural network definition and training |
+| **Matplotlib** | Plots (curves, distributions) |
+| **Jupyter** | Interactive notebooks |
 
-</div>
+---
+
+## 📜 License
+
+This project is available under the **MITY License**. Feel free to use it for learning or as a base for your own experiments.
+
+---
+
+<p align="center">
+  <b>If this project helped you, consider giving it a ⭐ on GitHub.</b>
+</p>
+<p align="center">
+  <sub>Heart Disease Binary Classification · Deep Learning · Keras · TensorFlow</sub>
+</p>
